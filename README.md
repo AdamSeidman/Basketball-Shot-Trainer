@@ -1,2 +1,2 @@
-# Basketball_Shot_Trainer
+# Basketball Shot Trainer
 Multidisciplinary Senior Design Project for RIT.
