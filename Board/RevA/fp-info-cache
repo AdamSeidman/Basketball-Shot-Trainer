@@ -1,41 +1,48 @@
-19092348577832177
-AJS_Library
+19093987904055134
+0_MSD_FPs
 AJS-Coin-Cell_1062-Digikey
 
 
 0
 2
 2
-AJS_Library
+0_MSD_FPs
 AJS-Switch_CFS-0102TA
 
 
 0
 2
 2
-AJS_Library
-AJS_74HC1GU04_NOT
-
-
-0
-5
-5
-AJS_Library
+0_MSD_FPs
 LED_1206_3216Metric_AJS
 LED SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
 LED
 0
 2
 2
-AJS_Library
-RGB_AJS
+0_MSD_FPs
+MSD_6_Pin
 
 
 0
 6
 6
-AJS_Library
-RGB_AJS_ALT
+0_MSD_FPs
+MSD_8_Pin
+
+
+0
+12
+12
+0_MSD_FPs
+MSD_12_Pin
+
+
+0
+12
+12
+0_MSD_FPs
+RGB_AJS
 
 
 0
