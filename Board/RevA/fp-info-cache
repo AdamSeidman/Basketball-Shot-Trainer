@@ -1,4 +1,11 @@
-19093987904055134
+19097253319823557
+0_MSD_FPs
+AJS-Coin-Cell_1027-Digikey
+
+
+0
+2
+2
 0_MSD_FPs
 AJS-Coin-Cell_1062-Digikey
 
@@ -10,6 +17,13 @@ AJS-Coin-Cell_1062-Digikey
 AJS-Switch_CFS-0102TA
 
 
+0
+2
+2
+0_MSD_FPs
+LED_0805_2012Metric
+LED SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
+LED
 0
 2
 2
@@ -32,8 +46,8 @@ MSD_8_Pin
 
 
 0
-12
-12
+8
+8
 0_MSD_FPs
 MSD_12_Pin
 
