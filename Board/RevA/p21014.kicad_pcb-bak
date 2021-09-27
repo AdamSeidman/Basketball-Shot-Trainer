@@ -169,7 +169,7 @@
   )
 
   (module 0_MSD_FPs:RIT_Logo (layer B.Cu) (tedit 0) (tstamp 615193D2)
-    (at 184.8 60.47 270)
+    (at 184.44 60.31 270)
     (fp_text reference G55 (at 0 0 270) (layer B.SilkS) hide
       (effects (font (size 1.524 1.524) (thickness 0.3)) (justify mirror))
     )
