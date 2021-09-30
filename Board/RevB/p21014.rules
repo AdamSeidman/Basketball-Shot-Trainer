@@ -11,18 +11,18 @@
     (via_costs 50)
     (plane_via_costs 5)
     (start_ripup_costs 100)
-    (start_pass_no 1276)
+    (start_pass_no 1657)
     (layer_rule F.Cu
       (active on)
       (preferred_direction horizontal)
       (preferred_direction_trace_costs 1.0)
-      (against_preferred_direction_trace_costs 3.1)
+      (against_preferred_direction_trace_costs 3.3)
     )
     (layer_rule B.Cu
       (active on)
       (preferred_direction vertical)
       (preferred_direction_trace_costs 1.0)
-      (against_preferred_direction_trace_costs 1.5)
+      (against_preferred_direction_trace_costs 1.4)
     )
   )
   (rule
@@ -64,10 +64,10 @@
   )
   (class "kicad_default"
     GNDREF "Net-(BT1-Pad1)" +BATT +5V "Net-(C3-Pad1)" "Net-(D1-Pad1)" "Net-(D1-Pad3)" "Net-(D1-Pad2)"
-    "Net-(D2-Pad2)" "/IMU_A/3v" /SCL /SDA /RST "/IMU_B/3v" "Net-(J3-Pad1)" "Net-(J3-Pad2)"
-    "Net-(J3-Pad3)" "Net-(J3-Pad4)" "Net-(J3-Pad5)" "Net-(J3-Pad6)" "Net-(J4-Pad2)" "Net-(J4-Pad3)" "Net-(J4-Pad5)" "Net-(J4-Pad8)"
-    "Net-(J4-Pad7)" "Net-(J5-Pad4)" "Net-(J5-Pad3)" "Net-(J5-Pad6)" "/Feather_Board/GREEN" "Net-(J5-Pad10)" "/Feather_Board/RED" "/Feather_Board/BLUE"
-    "Net-(J6-Pad4)" "Net-(J6-Pad5)"
+    "Net-(D2-Pad2)" /SCL /RST /SDA "/IMU_A/3v" "Net-(J3-Pad1)" "Net-(J3-Pad2)" "Net-(J3-Pad3)"
+    "Net-(J3-Pad4)" "Net-(J3-Pad5)" "Net-(J3-Pad6)" "Net-(J4-Pad2)" "Net-(J4-Pad3)" "Net-(J4-Pad5)" "Net-(J4-Pad8)" "Net-(J4-Pad7)"
+    "Net-(J5-Pad4)" "Net-(J5-Pad3)" "Net-(J5-Pad6)" "/Feather_Board/GREEN" "Net-(J5-Pad10)" "/Feather_Board/RED" "/Feather_Board/BLUE" "Net-(J6-Pad4)"
+    "Net-(J6-Pad5)"
     (clearance_class "kicad_default")
     (via_rule kicad_default)
     (rule
