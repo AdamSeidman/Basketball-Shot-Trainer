@@ -346,7 +346,7 @@
   )
 
   (module 0_MSD_FPs:RIT_Logo (layer B.Cu) (tedit 0) (tstamp 615193D2)
-    (at 190.9 60.16 270)
+    (at 191.12 60.16 270)
     (fp_text reference G55 (at 0 0 270) (layer B.SilkS) hide
       (effects (font (size 1.524 1.524) (thickness 0.3)) (justify mirror))
     )
@@ -847,7 +847,7 @@
   )
 
   (module 0_MSD_FPs:MSD_6_Pin (layer B.Cu) (tedit 6151089D) (tstamp 615A56BA)
-    (at 185 53.81 270)
+    (at 186.27 53.81 270)
     (path /614ADF24/614AF895)
     (fp_text reference J1 (at 1.27 -3.81 270) (layer Cmts.User)
       (effects (font (size 1 1) (thickness 0.15)))
