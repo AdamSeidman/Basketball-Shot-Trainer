@@ -61,7 +61,7 @@
       (place BT1 196000 -60160 back 180 (PN Battery_Cell))
     )
     (component 0_MSD_FPs:RIT_Logo
-      (place G55 190900 -60160 back 90 (PN LOGO))
+      (place G55 191120 -60160 back 90 (PN LOGO))
     )
     (component Capacitor_SMD:C_0603_1608Metric
       (place C1 203265 -66415 front 0 (PN 0.1uF))
@@ -78,7 +78,7 @@
       (place D1 190140 -72460 back 180 (PN LED_RGB))
     )
     (component 0_MSD_FPs:MSD_6_Pin
-      (place J1 185000 -53810 back 90 (PN Conn_01x06_Male))
+      (place J1 186270 -53810 back 90 (PN Conn_01x06_Male))
       (place J6 205240 -50000 front 0 (PN Conn_01x06_Female))
     )
     (component Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical
