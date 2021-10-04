@@ -86,7 +86,7 @@
       (mirror false)
       (drillshape 0)
       (scaleselection 1)
-      (outputdirectory "../##Gerber/RevB/"))
+      (outputdirectory "../##Gerber/RevC/"))
   )
 
   (net 0 "")
