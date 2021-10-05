@@ -29,6 +29,9 @@ void error(const __FlashStringHelper*err) {
   while (1);
 }
 
+char _buffer[3];
+long last_time = 0;
+
 void setup(void)
 {
   while (!Serial);
@@ -39,25 +42,40 @@ void setup(void)
   Serial.println(F("---------------------------------------"));
 
   configure_bluetooth();
+
+  _buffer[3] = '\n';
+
+  wait_for_connection();
+  last_time = millis();
 }
 
 void loop(void)
 {
-  // TODO add real data
-  send_data(361, ACCEL_Y);
-  print_data_if_available();
-  delay(2000);
+  if (!ble.isConnected()) {
+      Serial.println("Lost Bluetooth Connection.");
+      wait_for_connection();
+  }
+
+  if (millis() >= (last_time + WAIT_TIME)) {
+      send_data(364, GYRO_Y);
+      last_time = millis();
+  }
+  
+  //print_data_if_available();
 }
 
 void send_data(uint16_t data, uint8_t data_type)
-{
+{  
   ble.print(TX_COMMAND);
 
   uint8_t _byte = (HEADER_BYTE_MASK | ((uint8_t)(data & DATA_MASK)) | data_type);
-  ble.print((char) _byte);
+  _buffer[0] = (char)_byte;
 
-  _byte = (((uint8_t)(data >> NUM_SHIFTED_BITS)) & DATA_BYTE_MASK);
-  ble.println((char) _byte);
+  uint8_t __byte = (((uint8_t)(data >> NUM_SHIFTED_BITS)) & DATA_BYTE_MASK);
+  /*ble.println((char) _byte);*/
+  _buffer[1] = (char)__byte;
+
+  ble.println(_buffer);
 
   // check response stastus
   if (! ble.waitForOK() ) {
@@ -81,12 +99,12 @@ void print_data_if_available()
 
 void configure_bluetooth(void)
 {
-    /* Initialise the module */
+  /* Initialise the module */
   Serial.print(F("Initialising the Bluefruit LE module: "));
 
   if ( !ble.begin(VERBOSE_MODE) )
   {
-    error(F("Couldn't find Bluefruit, make sure it's in CoMmanD mode & check wiring?"));
+    error(F("Couldn't find Bluefruit, make sure it's in CommanD mode & check wiring?"));
   }
   Serial.println( F("OK!") );
 
@@ -108,18 +126,18 @@ void configure_bluetooth(void)
 
   ble.verbose(false);  // debug info is a little annoying after this point!
 
+  // Set Device Name
+  ble.println(DEVICE_NAME_COMMAND);
+}
+
+void wait_for_connection(void)
+{
+    Serial.println("\n\rWaiting for connection...");
+
   /* Wait for connection */
   while (! ble.isConnected()) {
       delay(500);
   }
-
-  // LED Activity command is only supported from 0.6.6
-  if ( ble.isVersionAtLeast(MINIMUM_FIRMWARE_VERSION) )
-  {
-    // Change Mode LED Activity
-    Serial.println(F("******************************"));
-    Serial.println(F("Change LED activity to " MODE_LED_BEHAVIOUR));
-    ble.sendCommandCheckOK("AT+HWModeLED=" MODE_LED_BEHAVIOUR);
-    Serial.println(F("******************************"));
-  }
+  
+  Serial.println("Connected!\n\r");
 }

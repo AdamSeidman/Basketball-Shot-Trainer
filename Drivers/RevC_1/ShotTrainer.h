@@ -29,7 +29,8 @@
 // ASSORTED CONSTANTS
 #define  NUM_SHIFTED_BITS             (3)
 #define  BAUD_RATE                    (115200)
-#define  PERSEC                       (10)
+#define  PERSEC                       (2)
 #define  WAIT_TIME                    (1000 / PERSEC)
+#define  DEVICE_NAME_COMMAND          "AT+GAPDEVNAME=Shot Trainer-Arm Module 1"
 
 #endif
