@@ -41,6 +41,7 @@ void error(const __FlashStringHelper*err) {
 char _buffer[3];
 long last_time = 0;
 sensors_event_t event;
+bool is_sending = false;
 
 void setup(void)
 {
@@ -65,7 +66,7 @@ void loop(void)
       wait_for_connection();
   }
 
-  if (millis() >= (last_time + WAIT_TIME)) {
+  if (is_sending && millis() >= (last_time + WAIT_TIME)) {
       bno.getEvent(&event);
 
       send_data(event.acceleration.x, ACCEL_X);
@@ -79,7 +80,7 @@ void loop(void)
       last_time = millis();
   }
   
-  //print_data_if_available();
+  handle_incoming();
 }
 
 void send_data(float raw_data, uint8_t data_type)
@@ -100,7 +101,7 @@ void send_data(float raw_data, uint8_t data_type)
   }
 }
 
-void print_data_if_available(void)
+void handle_incoming(void)
 {
   // Check for incoming characters from Bluefruit
   ble.println(RX_COMMAND);
@@ -110,7 +111,19 @@ void print_data_if_available(void)
     return;
   }
   // Some data was found, its in the buffer
-  Serial.print(F("[Recv] ")); Serial.println(ble.buffer);
+
+  char rec = ble.buffer[0];
+  if (rec == 'a')
+  {
+    is_sending = true;
+    Serial.println("Start Data Requested");
+  }
+  else if (rec == 'b')
+  {
+    is_sending = false;
+    Serial.println("Stop Data Requested");
+  }
+  
   ble.waitForOK();
 }
 

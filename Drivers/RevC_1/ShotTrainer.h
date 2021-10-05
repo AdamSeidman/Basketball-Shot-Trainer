@@ -8,7 +8,7 @@
 
 // BLE COMMANDS
 #define  TX_COMMAND                   "AT+BLEUARTTX="
-#define  RX_COMMAND                   "AT+BLEUARTRX="
+#define  RX_COMMAND                   "AT+BLEUARTRX"
 
 // BYTE HEADER INFORMATION
 #define  FULL_BYTE                    (0b11111111)
@@ -28,7 +28,7 @@
 // ASSORTED CONSTANTS
 #define  NUM_SHIFTED_BITS             (7)
 #define  BAUD_RATE                    (115200)
-#define  PER_SEC                      (2)
+#define  PER_SEC                      (5)
 #define  WAIT_TIME                    (1000 / PER_SEC)
 #define  DEVICE_NAME_COMMAND          "AT+GAPDEVNAME=Shot Trainer-Arm Module 1"
 
