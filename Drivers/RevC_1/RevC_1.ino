@@ -24,7 +24,7 @@
 #include "ShotTrainer.h"
 
 #if SOFTWARE_SERIAL_AVAILABLE
-  #include <SoftwareSerial.h>
+#include <SoftwareSerial.h>
 #endif
 
 // Bluetooth Object
@@ -62,29 +62,29 @@ void setup(void)
 void loop(void)
 {
   if (!ble.isConnected()) {
-      Serial.println("Lost Bluetooth Connection.");
-      wait_for_connection();
+    Serial.println("Lost Bluetooth Connection.");
+    wait_for_connection();
   }
 
   if (is_sending && millis() >= (last_time + WAIT_TIME)) {
-      bno.getEvent(&event);
+    bno.getEvent(&event);
 
-      send_data(event.acceleration.x, ACCEL_X);
-      send_data(event.acceleration.y, ACCEL_Y);
-      send_data(event.acceleration.z, ACCEL_Z);
+    send_data(event.acceleration.x, ACCEL_X);
+    send_data(event.acceleration.y, ACCEL_Y);
+    send_data(event.acceleration.z, ACCEL_Z);
 
-      send_data(event.orientation.x, GYRO_X);
-      send_data(event.orientation.y, GYRO_Y);
-      send_data(event.orientation.z, GYRO_Z);
-      
-      last_time = millis();
+    send_data(event.orientation.x, GYRO_X);
+    send_data(event.orientation.y, GYRO_Y);
+    send_data(event.orientation.z, GYRO_Z);
+
+    last_time = millis();
   }
-  
+
   handle_incoming();
 }
 
 void send_data(float raw_data, uint8_t data_type)
-{  
+{
   ble.print(TX_COMMAND);
 
   uint16_t data = (uint16_t)(raw_data * 32.0);
@@ -123,24 +123,24 @@ void handle_incoming(void)
     is_sending = false;
     Serial.println("Stop Data Requested");
   }
-  
+
   ble.waitForOK();
 }
 
 void configure_imu(void)
 {
   Serial.print(F("Initializing the BNO055 IMU module: "));
-  
+
   if (!bno.begin())
   {
     /* There was a problem detecting the BNO055 ... check your connections */
     Serial.print("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
-    while(1)
+    while (1)
       ;
   }
 
   delay(1000);
-  
+
   bno.setExtCrystalUse(true);
 
   Serial.println(F("OK!\n\r"));
@@ -161,7 +161,7 @@ void configure_bluetooth(void)
   {
     /* Perform a factory reset to make sure everything is in a known state */
     Serial.println(F("Performing a factory reset: "));
-    if ( ! ble.factoryReset() ){
+    if ( ! ble.factoryReset() ) {
       error(F("Couldn't factory reset"));
     }
   }
@@ -181,12 +181,12 @@ void configure_bluetooth(void)
 
 void wait_for_connection(void)
 {
-    Serial.println("\n\rWaiting for connection...");
+  Serial.println("\n\rWaiting for connection...");
 
   /* Wait for connection */
   while (! ble.isConnected()) {
-      delay(500);
+    delay(500);
   }
-  
+
   Serial.println("Connected!\n\r");
 }
