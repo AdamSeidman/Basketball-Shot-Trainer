@@ -153,21 +153,24 @@ void configure_bluetooth(void)
 
   if ( !ble.begin(VERBOSE_MODE) )
   {
-    error(F("Couldn't find Bluefruit, make sure it's in CommanD mode & check wiring?"));
+    error(F("Couldn't find Bluefruit, make sure it's in Command mode & check wiring?"));
   }
   Serial.println( F("OK!") );
+
+
+  /* Disable command echo from Bluefruit */
+  ble.echo(false);
 
   if ( FACTORYRESET_ENABLE )
   {
     /* Perform a factory reset to make sure everything is in a known state */
-    Serial.println(F("Performing a factory reset: "));
+    Serial.print(F("Performing a factory reset: "));
     if ( ! ble.factoryReset() ) {
       error(F("Couldn't factory reset"));
+    } else {
+      Serial.println(F("OK!\n\r"));
     }
   }
-
-  /* Disable command echo from Bluefruit */
-  ble.echo(false);
 
   Serial.println("Requesting Bluefruit info:");
   /* Print Bluefruit information */
