@@ -15,6 +15,11 @@
 #include "Adafruit_BluefruitLE_SPI.h"
 #include "Adafruit_BluefruitLE_UART.h"
 
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BNO055.h>
+#include <utility/imumaths.h>
+
 #include "BluefruitConfig.h"
 #include "ShotTrainer.h"
 
@@ -22,7 +27,11 @@
   #include <SoftwareSerial.h>
 #endif
 
+// Bluetooth Object
 Adafruit_BluefruitLE_SPI ble(BLUEFRUIT_SPI_CS, BLUEFRUIT_SPI_IRQ, BLUEFRUIT_SPI_RST);
+
+// IMU Object
+Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
 void error(const __FlashStringHelper*err) {
   Serial.println(err);
@@ -31,6 +40,7 @@ void error(const __FlashStringHelper*err) {
 
 char _buffer[3];
 long last_time = 0;
+sensors_event_t event;
 
 void setup(void)
 {
@@ -41,9 +51,8 @@ void setup(void)
   Serial.println(F("Basketball Shot Trainer Initialization..."));
   Serial.println(F("---------------------------------------"));
 
+  configure_imu();
   configure_bluetooth();
-
-  _buffer[3] = '\n';
 
   wait_for_connection();
   last_time = millis();
@@ -57,33 +66,41 @@ void loop(void)
   }
 
   if (millis() >= (last_time + WAIT_TIME)) {
-      send_data(364, GYRO_Y);
+      bno.getEvent(&event);
+
+      send_data(event.acceleration.x, ACCEL_X);
+      send_data(event.acceleration.y, ACCEL_Y);
+      send_data(event.acceleration.z, ACCEL_Z);
+
+      send_data(event.orientation.x, GYRO_X);
+      send_data(event.orientation.y, GYRO_Y);
+      send_data(event.orientation.z, GYRO_Z);
+      
       last_time = millis();
   }
   
   //print_data_if_available();
 }
 
-void send_data(uint16_t data, uint8_t data_type)
+void send_data(float raw_data, uint8_t data_type)
 {  
   ble.print(TX_COMMAND);
 
-  uint8_t _byte = (HEADER_BYTE_MASK | ((uint8_t)(data & DATA_MASK)) | data_type);
-  _buffer[0] = (char)_byte;
+  uint16_t data = (uint16_t)(raw_data * 32.0);
 
-  uint8_t __byte = (((uint8_t)(data >> NUM_SHIFTED_BITS)) & DATA_BYTE_MASK);
-  /*ble.println((char) _byte);*/
-  _buffer[1] = (char)__byte;
+  _buffer[0] = (char)(data_type);
+  _buffer[1] = (char)(((uint8_t)(data >> NUM_SHIFTED_BITS)) & DATA_BYTE_MASK);
+  _buffer[2] = (char)(((uint8_t)(data & DATA_MASK)) & DATA_BYTE_MASK);
 
   ble.println(_buffer);
 
   // check response stastus
   if (! ble.waitForOK() ) {
-    Serial.println(F("Failed to send?"));
+    Serial.println(F("Failed to send a packet.\n\r"));
   }
 }
 
-void print_data_if_available()
+void print_data_if_available(void)
 {
   // Check for incoming characters from Bluefruit
   ble.println(RX_COMMAND);
@@ -97,10 +114,29 @@ void print_data_if_available()
   ble.waitForOK();
 }
 
+void configure_imu(void)
+{
+  Serial.print(F("Initializing the BNO055 IMU module: "));
+  
+  if (!bno.begin())
+  {
+    /* There was a problem detecting the BNO055 ... check your connections */
+    Serial.print("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
+    while(1)
+      ;
+  }
+
+  delay(1000);
+  
+  bno.setExtCrystalUse(true);
+
+  Serial.println(F("OK!\n\r"));
+}
+
 void configure_bluetooth(void)
 {
   /* Initialise the module */
-  Serial.print(F("Initialising the Bluefruit LE module: "));
+  Serial.print(F("Initializing the Bluefruit LE module: "));
 
   if ( !ble.begin(VERBOSE_MODE) )
   {
