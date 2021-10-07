@@ -1,3 +1,9 @@
+/**
+ * P21014 Wearable Bluetooth Module Driver
+ * Uses Feather M0 Bluefruit BLE, Adafruit BNO055, and Custom PCB/Mounting
+ * Author: Adam Seidman
+ */
+
 #include <Adafruit_ATParser.h>
 #include <Adafruit_BLE.h>
 #include <Adafruit_BLEBattery.h>
