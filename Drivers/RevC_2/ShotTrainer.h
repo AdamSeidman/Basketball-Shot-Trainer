@@ -59,7 +59,7 @@
 // ASSORTED CONSTANTS
 #define  BAUD_RATE                    (115200)
 #define  PER_SEC                      (5)
-#define  WAIT_TIME                    2500//(1000 / PER_SEC)
+#define  WAIT_TIME                    (1000 / PER_SEC)
 #define  DATA_FACTOR                  (32.0)
 #define  I2C_PORT                     (55)
 
