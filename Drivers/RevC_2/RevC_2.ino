@@ -22,8 +22,8 @@ void setup(void)
   delay(500);
 
   Serial.begin(BAUD_RATE);
-  Serial.println( F("Basketball Shot Trainer Initialization...") );
-  Serial.println( F("---------------------------------------") );
+  Serial.println( F("Basketball Shot Trainer- Arm Module: Serial Output") );
+  Serial.println( F("--------------------------------------------------\n\r") );
 
   configure_imu();
   configure_bluetooth();
@@ -43,10 +43,6 @@ void loop(void)
   if (is_sending && millis() >= (last_time + WAIT_TIME))
   {
     bno.getEvent(&event);
-
-    // send_data(event.acceleration.x, ACCEL_X);
-    // send_data(event.acceleration.y, ACCEL_Y);
-    // send_data(event.acceleration.z, ACCEL_Z);
 
     send_data(event.orientation.x, GYRO_X);
     send_data(event.orientation.y, GYRO_Y);
@@ -80,7 +76,7 @@ void handle_incoming(void)
   ble.println(RX_COMMAND);
   ble.readline();
   
-  if ( strcmp(ble.buffer, "OK" ) == 0)  return; // no data: leave function
+  if ( strcmp(ble.buffer, "OK" ) == 0 )  return; // no data: leave function
 
   char rec = ble.buffer[0];
   if ( rec == START_CMD )
@@ -106,7 +102,7 @@ void configure_imu(void)
   delay(1000);
 
   bno.setExtCrystalUse(true);
-  Serial.println( F("OK!\n\r") );
+  Serial.println( F("OK!") );
 }
 
 void configure_bluetooth(void)
@@ -114,7 +110,7 @@ void configure_bluetooth(void)
   /* Initialise the module */
   Serial.print( F("Initializing the Bluefruit LE module: ") );
 
-  if ( !ble.begin(VERBOSE_MODE) )   error( F("Couldn't find Bluefruit, make sure it's in Command mode & check wiring?") );
+  if ( !ble.begin(false) )   error( F("Couldn't find Bluefruit, make sure it's in Command mode & check wiring?") );
   Serial.println( F("OK!") );
 
   /* Disable command echo from Bluefruit */
@@ -127,14 +123,13 @@ void configure_bluetooth(void)
     if ( !ble.factoryReset() )
     {
       error( F("Couldn't factory reset") );
-    } else {
-      Serial.println( F("OK!\n\r") );
+    }
+    else
+    {
+      Serial.println( F("OK!") );
     }
   }
 
-  Serial.println( F("Requesting Bluefruit info:") );
-  ble.info();                         // Print Bluefruit information
-  ble.verbose(false);                 // debug info is a little annoying after this point!
   ble.println(DEVICE_NAME_COMMAND);   // Set Device Name
 }
 
