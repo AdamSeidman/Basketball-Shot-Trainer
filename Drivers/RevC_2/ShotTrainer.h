@@ -32,12 +32,12 @@
 #define  DEVICE_NAME_COMMAND          "AT+GAPDEVNAME=Shot Trainer-Arm Module 1"
 
 // BYTE HEADER INFORMATION
-#define  FULL_BYTE                    (0b11111111)
-#define  BYTE_TYPE_POS                (1<<7)
-#define  HEADER_BYTE_MASK             (BYTE_TYPE_POS)
-#define  DATA_BYTE_MASK               (FULL_BYTE & (~BYTE_TYPE_POS))
-#define  DATA_MASK                    (0x007F)
+#define  FULL_BYTE                    (0xFF)
 #define  NUM_SHIFTED_BITS             (7)
+#define  BYTE_TYPE_POS                (1 << NUM_SHIFTED_BITS)
+#define  HEADER_BYTE_MASK             (BYTE_TYPE_POS)
+#define  DATA_BYTE_MASK               (~BYTE_TYPE_POS)
+#define  DATA_MASK                    (0x007F)
 
 // BYTE TYPE INFORMATION
 #define  START_CMD                    'a'
@@ -59,7 +59,7 @@
 // ASSORTED CONSTANTS
 #define  BAUD_RATE                    (115200)
 #define  PER_SEC                      (5)
-#define  WAIT_TIME                    (1000 / PER_SEC)
+#define  WAIT_TIME                    2500//(1000 / PER_SEC)
 #define  DATA_FACTOR                  (32.0)
 #define  I2C_PORT                     (55)
 

@@ -55,14 +55,14 @@ void loop(void)
 }
 
 void send_data(float raw_data, uint8_t data_type)
-{
+{  
   ble.print(TX_COMMAND);
 
   uint16_t data = (uint16_t)(raw_data * DATA_FACTOR);
 
   _buffer[0] = (char)(data_type);
-  _buffer[1] = (char)(((uint8_t)(data >> NUM_SHIFTED_BITS)) & DATA_BYTE_MASK);
-  _buffer[2] = (char)(((uint8_t)(data & DATA_MASK)) & DATA_BYTE_MASK);
+  _buffer[1] = (char)~(((uint8_t)(data >> NUM_SHIFTED_BITS)) & DATA_BYTE_MASK);
+  _buffer[2] = (char)~(((uint8_t)(data & DATA_MASK)) & DATA_BYTE_MASK);
 
   ble.println(_buffer);
 
