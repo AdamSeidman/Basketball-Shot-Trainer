@@ -10,12 +10,6 @@
 Adafruit_BluefruitLE_SPI ble(BLUEFRUIT_SPI_CS, BLUEFRUIT_SPI_IRQ, BLUEFRUIT_SPI_RST);
 Adafruit_BNO055 bno = Adafruit_BNO055(I2C_PORT);
 
-void error(const __FlashStringHelper*err)
-{
-  Serial.println(err);
-  while (1);
-}
-
 // Global Variables
 char _buffer[3];
 long last_time = 0;
@@ -105,9 +99,9 @@ void handle_incoming(void)
 
 void configure_imu(void)
 {
-  Serial.print(F("Initializing the BNO055 IMU module: "));
+  Serial.print( F("Initializing the BNO055 IMU module: ") );
 
-  if ( !bno.begin() ) error(F("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!"));
+  if ( !bno.begin() ) error( F("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!") );
   
   delay(1000);
 
@@ -120,7 +114,7 @@ void configure_bluetooth(void)
   /* Initialise the module */
   Serial.print( F("Initializing the Bluefruit LE module: ") );
 
-  if ( !ble.begin(VERBOSE_MODE) )   error(F("Couldn't find Bluefruit, make sure it's in Command mode & check wiring?"));
+  if ( !ble.begin(VERBOSE_MODE) )   error( F("Couldn't find Bluefruit, make sure it's in Command mode & check wiring?") );
   Serial.println( F("OK!") );
 
   /* Disable command echo from Bluefruit */
@@ -129,9 +123,10 @@ void configure_bluetooth(void)
   if ( FACTORYRESET_ENABLE )
   {
     /* Perform a factory reset to make sure everything is in a known state */
-    Serial.print(F("Performing a factory reset: "));
-    if ( !ble.factoryReset() ) {
-      error(F("Couldn't factory reset"));
+    Serial.print( F("Performing a factory reset: ") );
+    if ( !ble.factoryReset() )
+    {
+      error( F("Couldn't factory reset") );
     } else {
       Serial.println( F("OK!\n\r") );
     }
@@ -148,4 +143,10 @@ void wait_for_connection(void)
   Serial.println( F("\n\rWaiting for connection...") );
   while ( !ble.isConnected() )  delay(500);
   Serial.println( F("Connected!\n\r") );
+}
+
+void error(const __FlashStringHelper*err)
+{
+  Serial.println(err);
+  while (1);
 }
