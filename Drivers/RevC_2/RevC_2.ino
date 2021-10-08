@@ -40,7 +40,7 @@ void loop(void)
     wait_for_connection();
   }
 
-  if (is_sending && millis() >= (last_time + WAIT_TIME))
+  if ( is_sending && millis() >= (last_time + WAIT_TIME) )
   {
     bno.getEvent(&event);
 
@@ -78,16 +78,18 @@ void handle_incoming(void)
   
   if ( strcmp(ble.buffer, "OK" ) == 0 )  return; // no data: leave function
 
-  char rec = ble.buffer[0];
-  if ( rec == START_CMD )
+  switch( ble.buffer[0] )
   {
-    is_sending = true;
-    Serial.println( F("Start Data Requested") );
-  }
-  else if ( rec == STOP_CMD )
-  {
-    is_sending = false;
-    Serial.println( F("Stop Data Requested") );
+    case START_CMD:
+      is_sending = true;
+      Serial.println( F("Start Data Requested") );
+      break;
+    case STOP_CMD:
+      is_sending = true;
+      Serial.println( F("Start Data Requested") );
+      break;
+    default:
+      break;
   }
 
   ble.waitForOK();
