@@ -21,6 +21,7 @@
 #define OFF         (0x0)
 
 #define INIT        (PURPLE)
+#define BLINK       (PURPLE)
 #define NORMAL      (OFF)
 #define ERR         (RED)
 #define AWAIT_CONN  (BLUE)
