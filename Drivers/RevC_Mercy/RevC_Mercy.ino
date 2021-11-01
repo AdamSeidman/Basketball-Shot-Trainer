@@ -84,7 +84,7 @@ void configure_imu(void)
 {
   Serial.print( F("Initializing the BNO055 IMU module: ") );
 
-  if ( !bno.begin() ) error( F("Oops, no BNO055 detected ... Check your wiring or I2C ADDR!"), NO_IMU );
+  if ( !bno.begin() ) error( F("Oops, no BNO055 detected ... Check your wiring or I2C ADDR!") );
   
   delay(1000);
 
@@ -97,7 +97,7 @@ void configure_bluetooth(void)
   /* Initialise the module */
   Serial.print( F("Initializing the Bluefruit LE module: ") );
 
-  if ( !ble.begin(false) )   error( F("Couldn't find Bluefruit, make sure it's in Command mode & check wiring?"), NO_BLE );
+  if ( !ble.begin(false) )   error( F("Couldn't find Bluefruit, make sure it's in Command mode & check wiring?") );
   Serial.println( F("OK!") );
 
   /* Disable command echo from Bluefruit */
@@ -109,7 +109,7 @@ void configure_bluetooth(void)
     Serial.print( F("Performing a factory reset: ") );
     if ( !ble.factoryReset() )
     {
-      error( F("Couldn't factory reset"), BAD_FS );
+      error( F("Couldn't factory reset") );
     }
     else
     {
@@ -127,13 +127,6 @@ void setLedColor(uint8_t color)
   digitalWrite(BLUE_PIN, (color >> BLUE_BIT) & COLOR_MSK);
 }
 
-void blink_led()
-{
-  setLedColor(BLINK);
-  delay(250);
-  setLedColor(NORMAL);
-}
-
 void wait_for_connection(void)
 {
   setLedColor(AWAIT_CONN);
@@ -144,10 +137,10 @@ void wait_for_connection(void)
   setLedColor(NORMAL);
 }
 
-void error(const __FlashStringHelper*err, uint8_t error_type)
+void error(const __FlashStringHelper*err)
 {
   Serial.println("");
   Serial.println(err);
-  setLedColor(error_type);
+  setLedColor(ERR);
   while (1);
 }
