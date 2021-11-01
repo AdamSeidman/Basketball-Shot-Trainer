@@ -20,13 +20,9 @@
 #define WHITE       (RED | GREEN | BLUE)
 #define OFF         (0x0)
 
-#define INIT        (WHITE)
+#define INIT        (PURPLE)
 #define NORMAL      (OFF)
-#define BLINK       (GREEN)
-#define NO_BLE      (PURPLE)
-#define NO_IMU      (RED)
+#define ERR         (RED)
 #define AWAIT_CONN  (BLUE)
-#define BAD_FS      (TEAL)
-#define RESERVED    (YELLOW)
 
 #endif
