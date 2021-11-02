@@ -66,7 +66,7 @@ void send_data(float raw_data, uint8_t data_type)
 
   ble.println(_buffer);
 
-  // check response stastus
+  // check response status
   if ( !ble.waitForOK() ) Serial.println( F("Failed to send a packet.\n\r") );
 }
 
