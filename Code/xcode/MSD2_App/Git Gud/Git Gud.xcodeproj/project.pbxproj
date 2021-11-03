@@ -14,6 +14,11 @@
 		0714D100272F2BD400202C05 /* Select_Coach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0714D0FF272F2BD400202C05 /* Select_Coach.swift */; };
 		0714D102272F320700202C05 /* Create_New_Coach_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0714D101272F320700202C05 /* Create_New_Coach_View.swift */; };
 		0714D104272F437600202C05 /* User_Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0714D103272F437600202C05 /* User_Classes.swift */; };
+		07284E9E2731BDE10062189F /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07284E9D2731BDE10062189F /* CircleImage.swift */; };
+		07284EA12731C3390062189F /* Navigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07284EA02731C3390062189F /* Navigate.swift */; };
+		07ABBF052731811D002CA92C /* Player_Profile_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ABBF042731811D002CA92C /* Player_Profile_View.swift */; };
+		07ABBF0727318136002CA92C /* Coach_Profile_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ABBF0627318136002CA92C /* Coach_Profile_View.swift */; };
+		07ABBF0C27318427002CA92C /* coachData.json in Resources */ = {isa = PBXBuildFile; fileRef = 07ABBF0B27318427002CA92C /* coachData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +30,11 @@
 		0714D0FF272F2BD400202C05 /* Select_Coach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Select_Coach.swift; sourceTree = "<group>"; };
 		0714D101272F320700202C05 /* Create_New_Coach_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create_New_Coach_View.swift; sourceTree = "<group>"; };
 		0714D103272F437600202C05 /* User_Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User_Classes.swift; sourceTree = "<group>"; };
+		07284E9D2731BDE10062189F /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		07284EA02731C3390062189F /* Navigate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigate.swift; sourceTree = "<group>"; };
+		07ABBF042731811D002CA92C /* Player_Profile_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player_Profile_View.swift; sourceTree = "<group>"; };
+		07ABBF0627318136002CA92C /* Coach_Profile_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coach_Profile_View.swift; sourceTree = "<group>"; };
+		07ABBF0B27318427002CA92C /* coachData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = coachData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,11 +67,12 @@
 		0714D0F0272F18DA00202C05 /* Git Gud */ = {
 			isa = PBXGroup;
 			children = (
+				07284E9F2731C3010062189F /* Extensions */,
+				07284E9C2731BDAA0062189F /* Classes */,
+				07ABBF082731826B002CA92C /* Data */,
+				07ABBF0327317E46002CA92C /* Views */,
 				0714D0F1272F18DB00202C05 /* Git_GudApp.swift */,
-				0714D0F3272F18DB00202C05 /* ContentView.swift */,
-				0714D101272F320700202C05 /* Create_New_Coach_View.swift */,
 				0714D103272F437600202C05 /* User_Classes.swift */,
-				0714D0FF272F2BD400202C05 /* Select_Coach.swift */,
 				0714D0F5272F190400202C05 /* Assets.xcassets */,
 				0714D0F7272F190400202C05 /* Preview Content */,
 			);
@@ -74,6 +85,42 @@
 				0714D0F8272F190400202C05 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		07284E9C2731BDAA0062189F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		07284E9F2731C3010062189F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				07284EA02731C3390062189F /* Navigate.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		07ABBF0327317E46002CA92C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0714D0FF272F2BD400202C05 /* Select_Coach.swift */,
+				0714D101272F320700202C05 /* Create_New_Coach_View.swift */,
+				0714D0F3272F18DB00202C05 /* ContentView.swift */,
+				07ABBF042731811D002CA92C /* Player_Profile_View.swift */,
+				07ABBF0627318136002CA92C /* Coach_Profile_View.swift */,
+				07284E9D2731BDE10062189F /* CircleImage.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		07ABBF082731826B002CA92C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				07ABBF0B27318427002CA92C /* coachData.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +183,7 @@
 			files = (
 				0714D0F9272F190400202C05 /* Preview Assets.xcassets in Resources */,
 				0714D0F6272F190400202C05 /* Assets.xcassets in Resources */,
+				07ABBF0C27318427002CA92C /* coachData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,10 +195,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0714D0F4272F18DB00202C05 /* ContentView.swift in Sources */,
+				07284E9E2731BDE10062189F /* CircleImage.swift in Sources */,
 				0714D0F2272F18DB00202C05 /* Git_GudApp.swift in Sources */,
 				0714D102272F320700202C05 /* Create_New_Coach_View.swift in Sources */,
 				0714D100272F2BD400202C05 /* Select_Coach.swift in Sources */,
 				0714D104272F437600202C05 /* User_Classes.swift in Sources */,
+				07284EA12731C3390062189F /* Navigate.swift in Sources */,
+				07ABBF0727318136002CA92C /* Coach_Profile_View.swift in Sources */,
+				07ABBF052731811D002CA92C /* Player_Profile_View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

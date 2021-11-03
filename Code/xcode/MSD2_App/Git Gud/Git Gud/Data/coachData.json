@@ -1,0 +1,23 @@
+
+
+[
+    {
+        "firstName": "Jason",
+        "lastName": "Ellis",
+        "teamList": {
+            [
+                {
+                    "teamName": "Wild Cats",
+                    "playerList": {
+                        [
+                            {
+                                "firstName": "Matthew",
+                                "lastName": "Fuss"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+]
