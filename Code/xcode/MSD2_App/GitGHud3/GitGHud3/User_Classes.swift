@@ -1,9 +1,4 @@
-//
-//  User_Structs.swift
-//  Git Gud
-//
-//  Created by Matthew Fuss on 10/31/21.
-//
+
 
 import Foundation
 
@@ -13,20 +8,26 @@ struct Stats{
     var shot_percentage:Double?
 }
 
-class Player{
+class Player: ObservableObject, Identifiable{
     var picture:[Int] = []
-    var firstName:String?
-    var lastName:String?
+    var firstName:String = ""
+    var lastName:String = ""
     var height_ft:Int?
     var height_in:Int?
     var stats = Stats()
+    init(firstName:String, lastName:String){
+        self.firstName = firstName
+        self.lastName = lastName
+    }
 }
 
-class Team{
+class Team: ObservableObject, Identifiable{
     var picture:[Int] = []
     var teamName:String?
     var playerList:[Player] = []
-    
+    init(teamName: String){
+        self.teamName = teamName
+    }
 }
 
 class Coach: ObservableObject{
@@ -35,9 +36,13 @@ class Coach: ObservableObject{
     var lastName:String?
     var teamList:[Team] = []
     
-    init(firstName:String, lastName:String){
+    init(firstName: String, lastName: String){
         self.firstName = firstName
         self.lastName = lastName
+    }
+    
+    func addTeam(team: Team){
+        self.teamList.append(team)
     }
     
     //func addTeam()
