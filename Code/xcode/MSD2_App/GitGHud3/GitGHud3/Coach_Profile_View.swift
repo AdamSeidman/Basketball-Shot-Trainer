@@ -43,23 +43,9 @@ struct Coach_Profile_View: View {
                                 openCamera = true
                                 changeProfileImage = true
                             }
-                            .sheet(isPresented: $openCamera) {
-                                 ImagePicker(selectedImage: $imageSelected,
-                                     sourceType: .camera)
-                                 .onDisappear(perform: {
-                                     coach.profileImage = imageSelected.jpegData(compressionQuality: 1.0)
-                                     try? self.moc.save()
-                                 })
-                             }
-                             .sheet(isPresented: $openPhotoLib) {
-                                 ImagePicker(selectedImage: $imageSelected,
-                                     sourceType: .photoLibrary)
-                                 .onDisappear(perform: {
-                                     coach.profileImage = imageSelected.jpegData(compressionQuality: 1.0)
-                                     try? self.moc.save()
-                                 })
-                             }
-                        } label: {
+                            
+                        }
+                    label: {
                             Image(uiImage:UIImage(data: coach.profileImage ?? genericBin, scale:1.0) ?? UIImage(named: "default_coach_image")!)
                                 .resizable()
                                 .frame(width: 200, height: 200)
@@ -67,13 +53,28 @@ struct Coach_Profile_View: View {
                                 .overlay(Circle().stroke(Color.white, lineWidth: 4))
                                 .shadow(radius: 7)
                         }
+                        .sheet(isPresented: $openCamera) {
+                             ImagePicker(selectedImage: $imageSelected,
+                                 sourceType: .camera)
+                             .onDisappear(perform: {
+                                 coach.profileImage = imageSelected.jpegData(compressionQuality: 1.0)
+                                 try? self.moc.save()
+                             })
+                         }
+                         .sheet(isPresented: $openPhotoLib) {
+                             ImagePicker(selectedImage: $imageSelected,
+                                 sourceType: .photoLibrary)
+                             .onDisappear(perform: {
+                                 coach.profileImage = imageSelected.jpegData(compressionQuality: 1.0)
+                                 try? self.moc.save()
+                                 })
+                        }
                     }
                 }
                 HStack{
                     //Text(self.coach.firstName ?? "")
                     //Text(self.coach.lastName ?? "")
                 }
-                Spacer()
                 Button("Select Team"){
                     self.select.select = "select team"
                 }
