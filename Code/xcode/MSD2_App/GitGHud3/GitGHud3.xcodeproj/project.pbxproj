@@ -13,12 +13,19 @@
 		0732F4C32734632900EC6630 /* GitGHud3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0732F4C12734632900EC6630 /* GitGHud3.xcdatamodeld */; };
 		0732F4D0273463A300EC6630 /* Extensions in Resources */ = {isa = PBXBuildFile; fileRef = 0732F4C9273463A200EC6630 /* Extensions */; };
 		0732F4D1273463A300EC6630 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 0732F4CA273463A200EC6630 /* Data */; };
-		07CCD19C27346AF60034EEB8 /* User_Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CCD19A27346AF60034EEB8 /* User_Classes.swift */; };
-		07CCD19D27346AF60034EEB8 /* Selector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CCD19B27346AF60034EEB8 /* Selector.swift */; };
+		07BEDBBE2736FCCA0091B6E6 /* Stats+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BEDBB62736FCCA0091B6E6 /* Stats+CoreDataClass.swift */; };
+		07BEDBBF2736FCCA0091B6E6 /* Stats+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BEDBB72736FCCA0091B6E6 /* Stats+CoreDataProperties.swift */; };
+		07BEDBC02736FCCA0091B6E6 /* Team+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BEDBB82736FCCA0091B6E6 /* Team+CoreDataClass.swift */; };
+		07BEDBC12736FCCA0091B6E6 /* Team+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BEDBB92736FCCA0091B6E6 /* Team+CoreDataProperties.swift */; };
+		07BEDBC22736FCCA0091B6E6 /* Coach+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BEDBBA2736FCCA0091B6E6 /* Coach+CoreDataClass.swift */; };
+		07BEDBC32736FCCA0091B6E6 /* Coach+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BEDBBB2736FCCA0091B6E6 /* Coach+CoreDataProperties.swift */; };
+		07BEDBC42736FCCA0091B6E6 /* Player+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BEDBBC2736FCCA0091B6E6 /* Player+CoreDataClass.swift */; };
+		07BEDBC52736FCCA0091B6E6 /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BEDBBD2736FCCA0091B6E6 /* Player+CoreDataProperties.swift */; };
+		07BEDBC7273734ED0091B6E6 /* DataSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BEDBC6273734ED0091B6E6 /* DataSelection.swift */; };
+		07CCD19D27346AF60034EEB8 /* NavigationSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CCD19B27346AF60034EEB8 /* NavigationSelector.swift */; };
 		07CCD19F27346B690034EEB8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CCD19E27346B690034EEB8 /* CoreDataManager.swift */; };
 		07CCD1A227346BBE0034EEB8 /* coreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07CCD1A027346BBE0034EEB8 /* coreDataModel.xcdatamodeld */; };
-		07CCD1A927346C760034EEB8 /* CoachData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CCD1A727346C760034EEB8 /* CoachData+CoreDataClass.swift */; };
-		07CCD1AA27346C760034EEB8 /* CoachData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CCD1A827346C760034EEB8 /* CoachData+CoreDataProperties.swift */; };
+		07CCD1AC2736C9380034EEB8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CCD1AB2736C9380034EEB8 /* ImagePicker.swift */; };
 		07E692DA27346A7D00B08683 /* Create_Team_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E692CB27346A7C00B08683 /* Create_Team_View.swift */; };
 		07E692DB27346A7D00B08683 /* Team_Row_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E692CC27346A7C00B08683 /* Team_Row_View.swift */; };
 		07E692DC27346A7D00B08683 /* Select_Team_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E692CD27346A7C00B08683 /* Select_Team_View.swift */; };
@@ -28,7 +35,7 @@
 		07E692E027346A7D00B08683 /* Title_Screen_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E692D127346A7C00B08683 /* Title_Screen_View.swift */; };
 		07E692E127346A7D00B08683 /* Player_Profile_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E692D227346A7C00B08683 /* Player_Profile_View.swift */; };
 		07E692E227346A7D00B08683 /* GitGHud3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E692D327346A7C00B08683 /* GitGHud3App.swift */; };
-		07E692E327346A7D00B08683 /* Select_Coach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E692D427346A7C00B08683 /* Select_Coach.swift */; };
+		07E692E327346A7D00B08683 /* Select_Coach_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E692D427346A7C00B08683 /* Select_Coach_View.swift */; };
 		07E692E427346A7D00B08683 /* Coach_Profile_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E692D527346A7C00B08683 /* Coach_Profile_View.swift */; };
 		07E692E527346A7D00B08683 /* Select_Player_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E692D627346A7C00B08683 /* Select_Player_View.swift */; };
 		07E692E627346A7D00B08683 /* Create_Player_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E692D727346A7D00B08683 /* Create_Player_View.swift */; };
@@ -42,12 +49,19 @@
 		0732F4C22734632900EC6630 /* GitGHud3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GitGHud3.xcdatamodel; sourceTree = "<group>"; };
 		0732F4C9273463A200EC6630 /* Extensions */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Extensions; path = "../../Git Gud/Git Gud/Extensions"; sourceTree = "<group>"; };
 		0732F4CA273463A200EC6630 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = "../../Git Gud/Git Gud/Data"; sourceTree = "<group>"; };
-		07CCD19A27346AF60034EEB8 /* User_Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User_Classes.swift; sourceTree = "<group>"; };
-		07CCD19B27346AF60034EEB8 /* Selector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selector.swift; sourceTree = "<group>"; };
+		07BEDBB62736FCCA0091B6E6 /* Stats+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stats+CoreDataClass.swift"; sourceTree = "<group>"; };
+		07BEDBB72736FCCA0091B6E6 /* Stats+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stats+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		07BEDBB82736FCCA0091B6E6 /* Team+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataClass.swift"; sourceTree = "<group>"; };
+		07BEDBB92736FCCA0091B6E6 /* Team+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		07BEDBBA2736FCCA0091B6E6 /* Coach+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coach+CoreDataClass.swift"; sourceTree = "<group>"; };
+		07BEDBBB2736FCCA0091B6E6 /* Coach+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coach+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		07BEDBBC2736FCCA0091B6E6 /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataClass.swift"; sourceTree = "<group>"; };
+		07BEDBBD2736FCCA0091B6E6 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		07BEDBC6273734ED0091B6E6 /* DataSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSelection.swift; sourceTree = "<group>"; };
+		07CCD19B27346AF60034EEB8 /* NavigationSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSelector.swift; sourceTree = "<group>"; };
 		07CCD19E27346B690034EEB8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		07CCD1A127346BBE0034EEB8 /* coreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coreDataModel.xcdatamodel; sourceTree = "<group>"; };
-		07CCD1A727346C760034EEB8 /* CoachData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CoachData+CoreDataClass.swift"; path = "GitGHud3/CoachData+CoreDataClass.swift"; sourceTree = "<group>"; };
-		07CCD1A827346C760034EEB8 /* CoachData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CoachData+CoreDataProperties.swift"; path = "GitGHud3/CoachData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		07CCD1AB2736C9380034EEB8 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		07E692CB27346A7C00B08683 /* Create_Team_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Create_Team_View.swift; sourceTree = "<group>"; };
 		07E692CC27346A7C00B08683 /* Team_Row_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team_Row_View.swift; sourceTree = "<group>"; };
 		07E692CD27346A7C00B08683 /* Select_Team_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Select_Team_View.swift; sourceTree = "<group>"; };
@@ -57,7 +71,7 @@
 		07E692D127346A7C00B08683 /* Title_Screen_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Title_Screen_View.swift; sourceTree = "<group>"; };
 		07E692D227346A7C00B08683 /* Player_Profile_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player_Profile_View.swift; sourceTree = "<group>"; };
 		07E692D327346A7C00B08683 /* GitGHud3App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitGHud3App.swift; sourceTree = "<group>"; };
-		07E692D427346A7C00B08683 /* Select_Coach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Select_Coach.swift; sourceTree = "<group>"; };
+		07E692D427346A7C00B08683 /* Select_Coach_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Select_Coach_View.swift; sourceTree = "<group>"; };
 		07E692D527346A7C00B08683 /* Coach_Profile_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coach_Profile_View.swift; sourceTree = "<group>"; };
 		07E692D627346A7C00B08683 /* Select_Player_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Select_Player_View.swift; sourceTree = "<group>"; };
 		07E692D727346A7D00B08683 /* Create_Player_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Create_Player_View.swift; sourceTree = "<group>"; };
@@ -77,8 +91,14 @@
 		0732F4AA2734631B00EC6630 = {
 			isa = PBXGroup;
 			children = (
-				07CCD1A727346C760034EEB8 /* CoachData+CoreDataClass.swift */,
-				07CCD1A827346C760034EEB8 /* CoachData+CoreDataProperties.swift */,
+				07BEDBB62736FCCA0091B6E6 /* Stats+CoreDataClass.swift */,
+				07BEDBB72736FCCA0091B6E6 /* Stats+CoreDataProperties.swift */,
+				07BEDBB82736FCCA0091B6E6 /* Team+CoreDataClass.swift */,
+				07BEDBB92736FCCA0091B6E6 /* Team+CoreDataProperties.swift */,
+				07BEDBBA2736FCCA0091B6E6 /* Coach+CoreDataClass.swift */,
+				07BEDBBB2736FCCA0091B6E6 /* Coach+CoreDataProperties.swift */,
+				07BEDBBC2736FCCA0091B6E6 /* Player+CoreDataClass.swift */,
+				07BEDBBD2736FCCA0091B6E6 /* Player+CoreDataProperties.swift */,
 				0732F4B52734631B00EC6630 /* GitGHud3 */,
 				0732F4B42734631B00EC6630 /* Products */,
 			);
@@ -95,6 +115,7 @@
 		0732F4B52734631B00EC6630 /* GitGHud3 */ = {
 			isa = PBXGroup;
 			children = (
+				07BEDBC82738360F0091B6E6 /* classes */,
 				07E692CF27346A7C00B08683 /* CircleImage.swift */,
 				07E692D527346A7C00B08683 /* Coach_Profile_View.swift */,
 				07E692D027346A7C00B08683 /* ContentView.swift */,
@@ -103,15 +124,12 @@
 				07E692CB27346A7C00B08683 /* Create_Team_View.swift */,
 				07E692D327346A7C00B08683 /* GitGHud3App.swift */,
 				07E692D227346A7C00B08683 /* Player_Profile_View.swift */,
-				07E692D427346A7C00B08683 /* Select_Coach.swift */,
+				07E692D427346A7C00B08683 /* Select_Coach_View.swift */,
 				07E692D627346A7C00B08683 /* Select_Player_View.swift */,
 				07E692CD27346A7C00B08683 /* Select_Team_View.swift */,
 				07E692CC27346A7C00B08683 /* Team_Row_View.swift */,
 				07E692D127346A7C00B08683 /* Title_Screen_View.swift */,
-				07CCD19B27346AF60034EEB8 /* Selector.swift */,
-				07CCD19A27346AF60034EEB8 /* User_Classes.swift */,
 				0732F4BA2734632900EC6630 /* Assets.xcassets */,
-				07CCD19E27346B690034EEB8 /* CoreDataManager.swift */,
 				0732F4CA273463A200EC6630 /* Data */,
 				0732F4C9273463A200EC6630 /* Extensions */,
 				0732F4BF2734632900EC6630 /* Persistence.swift */,
@@ -128,6 +146,17 @@
 				0732F4BD2734632900EC6630 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		07BEDBC82738360F0091B6E6 /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				07BEDBC6273734ED0091B6E6 /* DataSelection.swift */,
+				07CCD19B27346AF60034EEB8 /* NavigationSelector.swift */,
+				07CCD19E27346B690034EEB8 /* CoreDataManager.swift */,
+				07CCD1AB2736C9380034EEB8 /* ImagePicker.swift */,
+			);
+			path = classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,27 +231,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07CCD1AA27346C760034EEB8 /* CoachData+CoreDataProperties.swift in Sources */,
-				07CCD1A927346C760034EEB8 /* CoachData+CoreDataClass.swift in Sources */,
 				07E692DE27346A7D00B08683 /* CircleImage.swift in Sources */,
-				07CCD19D27346AF60034EEB8 /* Selector.swift in Sources */,
+				07CCD19D27346AF60034EEB8 /* NavigationSelector.swift in Sources */,
+				07BEDBC52736FCCA0091B6E6 /* Player+CoreDataProperties.swift in Sources */,
 				07CCD19F27346B690034EEB8 /* CoreDataManager.swift in Sources */,
-				07E692E327346A7D00B08683 /* Select_Coach.swift in Sources */,
+				07E692E327346A7D00B08683 /* Select_Coach_View.swift in Sources */,
 				07E692DA27346A7D00B08683 /* Create_Team_View.swift in Sources */,
+				07CCD1AC2736C9380034EEB8 /* ImagePicker.swift in Sources */,
+				07BEDBC22736FCCA0091B6E6 /* Coach+CoreDataClass.swift in Sources */,
 				07E692E027346A7D00B08683 /* Title_Screen_View.swift in Sources */,
 				07E692E427346A7D00B08683 /* Coach_Profile_View.swift in Sources */,
+				07BEDBC02736FCCA0091B6E6 /* Team+CoreDataClass.swift in Sources */,
 				0732F4C32734632900EC6630 /* GitGHud3.xcdatamodeld in Sources */,
 				07E692E527346A7D00B08683 /* Select_Player_View.swift in Sources */,
 				07E692E127346A7D00B08683 /* Player_Profile_View.swift in Sources */,
 				07CCD1A227346BBE0034EEB8 /* coreDataModel.xcdatamodeld in Sources */,
+				07BEDBC32736FCCA0091B6E6 /* Coach+CoreDataProperties.swift in Sources */,
 				0732F4C02734632900EC6630 /* Persistence.swift in Sources */,
+				07BEDBC42736FCCA0091B6E6 /* Player+CoreDataClass.swift in Sources */,
+				07BEDBC7273734ED0091B6E6 /* DataSelection.swift in Sources */,
 				07E692DF27346A7D00B08683 /* ContentView.swift in Sources */,
 				07E692E227346A7D00B08683 /* GitGHud3App.swift in Sources */,
+				07BEDBBF2736FCCA0091B6E6 /* Stats+CoreDataProperties.swift in Sources */,
 				07E692DD27346A7D00B08683 /* Create_New_Coach_View.swift in Sources */,
-				07CCD19C27346AF60034EEB8 /* User_Classes.swift in Sources */,
 				07E692E627346A7D00B08683 /* Create_Player_View.swift in Sources */,
 				07E692DB27346A7D00B08683 /* Team_Row_View.swift in Sources */,
 				07E692DC27346A7D00B08683 /* Select_Team_View.swift in Sources */,
+				07BEDBC12736FCCA0091B6E6 /* Team+CoreDataProperties.swift in Sources */,
+				07BEDBBE2736FCCA0091B6E6 /* Stats+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +392,7 @@
 				DEVELOPMENT_TEAM = 38363V69GX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "please allow camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -385,6 +422,7 @@
 				DEVELOPMENT_TEAM = 38363V69GX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "please allow camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

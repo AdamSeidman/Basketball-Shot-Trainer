@@ -9,11 +9,12 @@ import SwiftUI
 
 @main
 struct GitGHud3App: App {
+    
     let persistenceController = PersistenceController.shared
-
+    
     var body: some Scene {
         WindowGroup {
-            ContentView(coreDM: CoreDataManager())
+            ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

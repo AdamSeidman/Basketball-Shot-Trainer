@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Team_Row_View: View {
-    @EnvironmentObject var select:Selector
+    @EnvironmentObject var select:NavigationSelector
     var team: Team
     var body: some View {
         Text(team.teamName ?? "Wild Cats")

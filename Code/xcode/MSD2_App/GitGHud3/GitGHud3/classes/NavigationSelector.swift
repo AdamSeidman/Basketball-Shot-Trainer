@@ -7,9 +7,9 @@
 
 import Foundation
 
-class Selector:ObservableObject{
+class NavigationSelector:ObservableObject{
     @Published var select:String?
     init(){
-        self.select = "none"
+        self.select = "title screen"
     }
 }

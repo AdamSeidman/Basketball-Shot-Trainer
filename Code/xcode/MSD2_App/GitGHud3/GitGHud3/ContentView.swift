@@ -9,27 +9,50 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-    @State private var navigateTitle:String? = ""
-    let coreDM: CoreDataManager
+    @Environment(\.managedObjectContext) var moc
+    
+    @FetchRequest(entity: Coach.entity(), sortDescriptors: []) var coaches: FetchedResults<Coach>
+    
+    @StateObject var select = NavigationSelector()
+    @StateObject var selectedData = DataSelection()
 
     var body: some View {
-        NavigationView {
-            NavigationLink(destination: Title_Screen_View(coreDM: coreDM), tag: "", selection: $navigateTitle){
-                EmptyView() }
-                .navigationBarHidden(true)
-                .navigationBarBackButtonHidden(true)
+        NavigationView{
+            VStack{
+                switch select.select{
+                case "title screen":
+                    Title_Screen_View()
+                case "select coach":
+                    Select_Coach_View(coaches: coaches)
+                case "create coach":
+                    Create_New_Coach_View()
+                case "select team":
+                    Select_Team_View(coaches: coaches)
+                case "coach profile":
+                    Coach_Profile_View(coaches: coaches)
+                case "create team":
+                    Create_Team_View(coaches: coaches)
+                case "select player":
+                    Select_Player_View(coaches: coaches)
+                case "create player":
+                    Create_Player_View(coaches: coaches)
+                default:
+                    Text("oops, something went wrong")
+                }
+            }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
         }
-        .navigationBarHidden(true)
+        .environmentObject(select)
+        .environmentObject(selectedData)
         .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
+}
+
     
-    
+ /*
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
@@ -74,3 +97,5 @@ private let itemFormatter: DateFormatter = {
 //        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     //}
 //}
+*/
+

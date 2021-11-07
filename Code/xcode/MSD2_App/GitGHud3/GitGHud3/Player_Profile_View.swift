@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct Player_Profile_View: View {
-    @EnvironmentObject var select: Selector
+    @EnvironmentObject var select: NavigationSelector
     @EnvironmentObject var coach: Coach
     @EnvironmentObject var team: Team
     @EnvironmentObject var player: Player
     var body: some View {
         VStack{
-            Text(self.player.firstName + "" + self.player.lastName)
+            Text((self.player.firstName ?? "") + "" + (self.player.lastName ?? ""))
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)

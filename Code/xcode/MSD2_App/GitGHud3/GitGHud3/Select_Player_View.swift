@@ -8,31 +8,55 @@
 import SwiftUI
 
 struct Select_Player_View: View {
-    @EnvironmentObject var select:Selector
-    @EnvironmentObject var coach: Coach
-    @EnvironmentObject var team: Team
-    @EnvironmentObject var player: Player
+    
+    @State var coaches: FetchedResults<Coach>
+    @EnvironmentObject var selectedData: DataSelection
+    @EnvironmentObject var select: NavigationSelector
+    @State var players:[Player] = []
+    @State var teams:[Team] = []
+    
+    
     var body: some View {
         NavigationView{
-            VStack(spacing: 30){
-                List(self.team.playerList) { player in
-                    NavigationLink(self.player.firstName + " " + self.player.lastName, destination: Player_Profile_View())
+            VStack{
+                HStack{
+                    Button("Title Screen"){
+                        self.select.select = "title screen"
+                    }
+                    Spacer()
                 }
-                .navigationBarBackButtonHidden(true)
-                .navigationBarHidden(true)
-                
-                Button("Add new player"){
-                    self.select.select = "create player"
+                List {
+                    Text("Select a player")
+                    ForEach(players){ player in
+                        Button((player.firstName ?? "John") + " " + (player.lastName ?? "Smith")) {
+                            self.selectedData.playerID = player.id
+                            self.select.select = "player profile"
+                        }
+                    }
+                    Button("Create Player"){
+                        self.select.select = "create player"
+                    }
+                    .padding(.top)
+                    Spacer()
                 }
             }
-            .navigationBarBackButtonHidden(true)
-            .navigationBarHidden(true)
+            .onAppear(perform: {
+                for coach in coaches{
+                    if coach.id == self.selectedData.coachID {
+                        teams = (coach.teamList)?.allObjects as? [Team] ?? []
+                        for team in teams {
+                            if team.id == self.selectedData.teamID {
+                                players = (team.playerList)?.allObjects as? [Player] ?? []
+                            }
+                        }
+                    }
+                }
+            })
+            
         }
+        
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
-        
-        
-        
     }
     
     

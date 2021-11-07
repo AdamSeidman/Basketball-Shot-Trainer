@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="20G224" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CoachData" representedClassName="CoachData" syncable="YES">
+    <entity name="Coach" representedClassName="Coach" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
-        <attribute name="teamList" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="profileImage" optional="YES" attributeType="Binary"/>
+        <relationship name="teamList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Team" inverseName="coach" inverseEntity="Team"/>
+    </entity>
+    <entity name="Player" representedClassName="Player" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="heightFT" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="heightIN" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="profileImage" optional="YES" attributeType="Binary"/>
+        <relationship name="stats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stats" inverseName="player" inverseEntity="Stats"/>
+        <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="playerList" inverseEntity="Team"/>
+    </entity>
+    <entity name="Stats" representedClassName="Stats" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="shootingPercentage" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="shotsMade" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="shotsMissed" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="stats" inverseEntity="Player"/>
+    </entity>
+    <entity name="Team" representedClassName="Team" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="teamName" optional="YES" attributeType="String"/>
+        <relationship name="coach" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Coach" inverseName="teamList" inverseEntity="Coach"/>
+        <relationship name="playerList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="team" inverseEntity="Player"/>
     </entity>
     <elements>
-        <element name="CoachData" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="Coach" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="Player" positionX="-36" positionY="45" width="128" height="149"/>
+        <element name="Stats" positionX="-27" positionY="90" width="128" height="104"/>
+        <element name="Team" positionX="-54" positionY="18" width="128" height="89"/>
     </elements>
 </model>

@@ -9,11 +9,9 @@ import SwiftUI
 import CoreData
 
 struct Create_New_Coach_View: View {
-    let coreDM: CoreDataManager
-    @EnvironmentObject var select:Selector
-    @EnvironmentObject var coach: Coach
-    @EnvironmentObject var team: Team
-    @EnvironmentObject var player: Player
+    //let context: NSManagedObjectContext
+    @Environment(\.managedObjectContext) var moc
+    @EnvironmentObject var select:NavigationSelector
     @State private var first = ""
     @State private var last = ""
     var body: some View {
@@ -28,35 +26,22 @@ struct Create_New_Coach_View: View {
                 Text("Last Name: ").padding(.leading, 20.0)
                 TextField("Smith",text: $last)
                     .frame(width: /*@START_MENU_TOKEN@*/104.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
-                    .zIndex(1)
                 Spacer()
             }
             HStack{
-                Button("Confirm"){
+                Button(action: {
+                    let coach = Coach(context: self.moc)
                     coach.firstName = first
                     coach.lastName = last
-                    coreDM.saveCoach(coach: coach)
-                    select.select = "select team"
-                }
+                    coach.profileImage = UIImage(named: "default_coach_image")?.jpegData(compressionQuality: 1.0)!
+                    coach.id = UUID()
+                    try? self.moc.save()
+                     //self.coach = coach
+                    select.select = "select coach"
+                }, label: {
+                        Text("Confirm")})
             }
             Spacer()
-        }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
-        .navigationBarHidden(true)
-    }
-}
-
-struct choose_coach_image_view: View{
-    var coach: Coach
-    var body: some View{
-        NavigationView{
-            VStack{
-                Spacer()
-                NavigationLink("Take new picture", destination: Coach_Profile_View())
-                NavigationLink("Select Existing Picture", destination: Coach_Profile_View())
-                NavigationLink("Proceed with no picture", destination: Coach_Profile_View())
-            }
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)

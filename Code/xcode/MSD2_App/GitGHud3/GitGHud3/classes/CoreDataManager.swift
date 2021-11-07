@@ -16,8 +16,20 @@ public class CoreDataManager {
         }
     }
     
-    func fetchCoaches() ->[CoachData] {
-        let fetchRequest: NSFetchRequest<CoachData> = CoachData.fetchRequest()
+    func deleteCoach(coachData: Coach){
+        
+        persistentContainer.viewContext.delete(coachData)
+        
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            persistentContainer.viewContext.rollback()
+            print("failed to save context \(error)")
+        }
+    }
+    
+    func fetchCoaches() ->[Coach] {
+        let fetchRequest: NSFetchRequest<Coach> = Coach.fetchRequest()
         
         do {
            return try persistentContainer.viewContext.fetch(fetchRequest)
@@ -27,14 +39,11 @@ public class CoreDataManager {
     }
     
     func saveCoach(coach: Coach){
-        let coachData = CoachData(context: persistentContainer.viewContext)
-        var teamNames:[String] = []
+        let coachData = Coach(context: persistentContainer.viewContext)
         coachData.firstName = coach.firstName
         coachData.lastName = coach.lastName
-        for (team) in coach.teamList{
-            teamNames.append(team.teamName ?? "none")
-        }
-        coachData.teamList = teamNames
+        coachData.teamList = coach.teamList
+        coachData.profileImage = coach.profileImage
         do{
             try persistentContainer.viewContext.save()
         } catch {

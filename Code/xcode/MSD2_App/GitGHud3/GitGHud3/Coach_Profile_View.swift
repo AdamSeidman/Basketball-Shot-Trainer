@@ -6,32 +6,74 @@
 //
 
 import SwiftUI
-
+import UIKit
 
 struct Coach_Profile_View: View {
-    @EnvironmentObject var select:Selector
-    @EnvironmentObject var coach: Coach
-    @EnvironmentObject var team: Team
-    @EnvironmentObject var player: Player
+    @Environment(\.managedObjectContext) var moc
+    @State var coaches: FetchedResults<Coach>
+    @EnvironmentObject var selectedData: DataSelection
+    @EnvironmentObject var select: NavigationSelector
+    
+    
+    @State var changeProfileImage = false
+    @State var openCamera = false
+    @State var openPhotoLib = false
+    @State private var imageChanged = true
+    @State var imageSelected = UIImage()
+    @State private var genericBin = Data(count: 1)
+    
+    
     var body: some View {
+        NavigationView{
             VStack{
                 HStack{
                     Button("Title Screen"){
-                        self.select.select = ""
+                        self.select.select = "title screen"
                     }
                     Spacer()
                 }
-                Image("default_coach_image")
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                    .shadow(radius: 7)
-                
-                HStack{
-                    Text(self.coach.firstName ?? "john")
-                    Text(self.coach.lastName ?? "Smith")
+                ForEach(coaches){ coach in
+                    if coach.id == self.selectedData.coachID {
+                        Menu {
+                            Button("Choose image from photo library") {
+                                openPhotoLib = true
+                                changeProfileImage = true
+                            }
+                            Button("Take new picture") {
+                                openCamera = true
+                                changeProfileImage = true
+                            }
+                            .sheet(isPresented: $openCamera) {
+                                 ImagePicker(selectedImage: $imageSelected,
+                                     sourceType: .camera)
+                                 .onDisappear(perform: {
+                                     coach.profileImage = imageSelected.jpegData(compressionQuality: 1.0)
+                                     try? self.moc.save()
+                                 })
+                             }
+                             .sheet(isPresented: $openPhotoLib) {
+                                 ImagePicker(selectedImage: $imageSelected,
+                                     sourceType: .photoLibrary)
+                                 .onDisappear(perform: {
+                                     coach.profileImage = imageSelected.jpegData(compressionQuality: 1.0)
+                                     try? self.moc.save()
+                                 })
+                             }
+                        } label: {
+                            Image(uiImage:UIImage(data: coach.profileImage ?? genericBin, scale:1.0) ?? UIImage(named: "default_coach_image")!)
+                                .resizable()
+                                .frame(width: 200, height: 200)
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                                .shadow(radius: 7)
+                        }
+                    }
                 }
+                HStack{
+                    //Text(self.coach.firstName ?? "")
+                    //Text(self.coach.lastName ?? "")
+                }
+                Spacer()
                 Button("Select Team"){
                     self.select.select = "select team"
                 }
@@ -40,11 +82,7 @@ struct Coach_Profile_View: View {
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
+        }
     }
 }
 
-//struct Coach_Profile_View_Previews: PreviewProvider {
-    //static var previews: some View {
-        //Coach_Profile_View()
-    //}
-//}
