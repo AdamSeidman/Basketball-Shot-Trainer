@@ -19,7 +19,11 @@ struct Select_Team_View: View {
                         self.select.select = "title screen"
                     }
                     Spacer()
+                    //Button(Label: Image("menu_button")){
+                        
+                    //}
                 }
+                Spacer()
                 List {
                     Text("Select a team")
                     ForEach(teams){ team in
@@ -34,6 +38,7 @@ struct Select_Team_View: View {
                     .padding(.top)
                     Spacer()
                 }
+                Spacer()
             }
             .onAppear(perform: {
                 for coach in coaches{
@@ -42,9 +47,7 @@ struct Select_Team_View: View {
                     }
                 }
             })
-            
         }
-        
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
     }

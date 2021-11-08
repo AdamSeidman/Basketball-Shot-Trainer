@@ -48,7 +48,7 @@ struct Coach_Profile_View: View {
                     label: {
                             Image(uiImage:UIImage(data: coach.profileImage ?? genericBin, scale:1.0) ?? UIImage(named: "default_coach_image")!)
                                 .resizable()
-                                .frame(width: 200, height: 200)
+                                .frame(width: 150, height: 200)
                                 .clipShape(Circle())
                                 .overlay(Circle().stroke(Color.white, lineWidth: 4))
                                 .shadow(radius: 7)
@@ -69,11 +69,11 @@ struct Coach_Profile_View: View {
                                  try? self.moc.save()
                                  })
                         }
+                        HStack{
+                            Text(coach.firstName ?? "")
+                            Text(coach.lastName ?? "")
+                        }
                     }
-                }
-                HStack{
-                    //Text(self.coach.firstName ?? "")
-                    //Text(self.coach.lastName ?? "")
                 }
                 Button("Select Team"){
                     self.select.select = "select team"
