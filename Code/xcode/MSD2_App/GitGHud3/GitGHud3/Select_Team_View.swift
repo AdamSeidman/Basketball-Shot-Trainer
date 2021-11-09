@@ -19,9 +19,15 @@ struct Select_Team_View: View {
                         self.select.select = "title screen"
                     }
                     Spacer()
-                    //Button(Label: Image("menu_button")){
+                    Menu {
+                        Button("button 1"){}
+                        Button("button 2"){}
                         
-                    //}
+                    } label: {
+                        Image("menu_button")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                    }
                 }
                 Spacer()
                 List {
@@ -40,6 +46,8 @@ struct Select_Team_View: View {
                 }
                 Spacer()
             }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
             .onAppear(perform: {
                 for coach in coaches{
                     if coach.id == self.selectedData.coachID {

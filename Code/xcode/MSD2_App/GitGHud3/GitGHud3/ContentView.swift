@@ -37,6 +37,8 @@ struct ContentView: View {
                     Select_Player_View(coaches: coaches)
                 case "create player":
                     Create_Player_View(coaches: coaches)
+                case "player profile":
+                    Player_Profile_View(coaches: coaches)
                 default:
                     Text("oops, something went wrong")
                 }
