@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct Git_GudApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(coreDM: CoreDataManager());
         }
     }
 }

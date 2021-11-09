@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  GitGud
+//  GitGHud3
 //
 //  Created by Deanna DiPaolo on 11/4/21.
 //
@@ -9,39 +9,52 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+    @Environment(\.managedObjectContext) var moc
+    
+    @FetchRequest(entity: Coach.entity(), sortDescriptors: []) var coaches: FetchedResults<Coach>
+    
+    @StateObject var select = NavigationSelector()
+    @StateObject var selectedData = DataSelection()
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
+        NavigationView{
+            VStack{
+                switch select.select{
+                case "title screen":
+                    Title_Screen_View()
+                case "select coach":
+                    Select_Coach_View(coaches: coaches)
+                case "create coach":
+                    Create_New_Coach_View()
+                case "select team":
+                    Select_Team_View(coaches: coaches)
+                case "coach profile":
+                    Coach_Profile_View(coaches: coaches)
+                case "create team":
+                    Create_Team_View(coaches: coaches)
+                case "select player":
+                    Select_Player_View(coaches: coaches)
+                case "create player":
+                    Create_Player_View(coaches: coaches)
+                case "player profile":
+                    Player_Profile_View(coaches: coaches)
+                default:
+                    Text("oops, something went wrong")
                 }
-                .onDelete(perform: deleteItems)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
         }
+        .environmentObject(select)
+        .environmentObject(selectedData)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
+}
 
+    
+ /*
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
@@ -81,8 +94,10 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    //}
+//}
+*/
+
