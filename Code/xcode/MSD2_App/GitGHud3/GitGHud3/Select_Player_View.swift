@@ -52,9 +52,7 @@ struct Select_Player_View: View {
                     }
                 }
             })
-            
         }
-        
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
     }
